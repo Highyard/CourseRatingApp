@@ -128,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
                     password.setText(getString(R.string.empty_string));
                     Toast.makeText(this, getString(R.string.toast_canceled_sign_up), Toast.LENGTH_LONG).show();
                 }
+                if (resultCode == RESULT_FIRST_USER) {
+                    email.setText(getString(R.string.empty_string));
+                    password.setText(getString(R.string.empty_string));
+                }
 
             } else {
                 // If some unforeseen event happens simply log it //
