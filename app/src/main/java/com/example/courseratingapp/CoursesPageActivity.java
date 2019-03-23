@@ -152,7 +152,7 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_PYTHON):
                 if (resultCode == RESULT_OK) {
                     Course pythonCourseRating = data.getParcelableExtra(RATING);
-                    Float pythonRating = pythonCourseRating.getCurrentOverallRating();
+                    Float pythonRating = pythonCourseRating.getAverageRating();
                     tvWelcomeMsg.setText(pythonRating.toString());
                     Log.d(TAG, pythonRating.toString());
                 }
@@ -164,7 +164,7 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_C):
                 if (resultCode == RESULT_OK){
                     Course C_CourseRating = data.getParcelableExtra(RATING);
-                    Float C_Rating = C_CourseRating.getCurrentOverallRating();
+                    Float C_Rating = C_CourseRating.getAverageRating();
                     tvWelcomeMsg.setText(C_Rating.toString());
                 }
                 if (resultCode == RESULT_CANCELED) {
@@ -175,7 +175,7 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_JS):
                 if (resultCode == RESULT_OK){
                     Course JSCourseRating = data.getParcelableExtra(RATING);
-                    Float JSRating = JSCourseRating.getCurrentOverallRating();
+                    Float JSRating = JSCourseRating.getAverageRating();
                     tvWelcomeMsg.setText(JSRating.toString());
                 }
                 if (resultCode == RESULT_CANCELED) {
@@ -187,7 +187,7 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_ANGULAR):
                 if (resultCode == RESULT_OK){
                     Course angularCourseRating = data.getParcelableExtra(RATING);
-                    Float angularRating = angularCourseRating.getCurrentOverallRating();
+                    Float angularRating = angularCourseRating.getAverageRating();
                     tvWelcomeMsg.setText(angularRating.toString());
                 }
                 if (resultCode == RESULT_CANCELED) {
@@ -199,7 +199,7 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_NODEJS):
                 if (resultCode == RESULT_OK){
                     Course nodeJSCourseRating = data.getParcelableExtra(RATING);
-                    Float nodeJSRating = nodeJSCourseRating.getCurrentOverallRating();
+                    Float nodeJSRating = nodeJSCourseRating.getAverageRating();
                     tvWelcomeMsg.setText(nodeJSRating.toString());
                 }
                 if (resultCode == RESULT_CANCELED) {
@@ -211,7 +211,7 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_JAVA):
                 if (resultCode == RESULT_OK){
                     Course javaCourseRating = data.getParcelableExtra(RATING);
-                    Float javaRating = javaCourseRating.getCurrentOverallRating();
+                    Float javaRating = javaCourseRating.getAverageRating();
                     tvWelcomeMsg.setText(javaRating.toString());
                 }
                 if (resultCode == RESULT_CANCELED) {

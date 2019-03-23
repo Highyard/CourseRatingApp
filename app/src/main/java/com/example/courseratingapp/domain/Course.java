@@ -7,19 +7,25 @@ public class Course implements Parcelable {
 
     private float currentOverallRating;
     private float newRating;
+    private float averageRating;
+    private int averageCount;
 
     public Course(){
 
     }
 
-    public Course(float currentOverallRating, float newRating) {
+    public Course(float currentOverallRating, float newRating,float averageRating, int averageCount) {
         this.currentOverallRating = currentOverallRating;
         this.newRating = newRating;
+        this.averageRating = averageRating;
+        this.averageCount = averageCount;
     }
 
     protected Course(Parcel in) {
         currentOverallRating = in.readFloat();
         newRating = in.readFloat();
+        averageRating = in.readFloat();
+        averageCount = in.readInt();
     }
 
     public static final Creator<Course> CREATOR = new Creator<Course>() {
@@ -50,6 +56,14 @@ public class Course implements Parcelable {
         this.newRating = newRating;
     }
 
+    public int getAverageCount() {return averageCount;}
+
+    public void setAverageCount(int averageCount) {this.averageCount = averageCount;}
+
+    public float getAverageRating () {return averageRating;}
+
+    public void setAverageRating(float averageRating) {this.averageRating = averageRating;}
+
     @Override
     public int describeContents() {
         return 0;
@@ -59,5 +73,7 @@ public class Course implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeFloat(currentOverallRating);
         dest.writeFloat(newRating);
+        dest.writeFloat(averageRating);
+        dest.writeInt(averageCount);
     }
 }
