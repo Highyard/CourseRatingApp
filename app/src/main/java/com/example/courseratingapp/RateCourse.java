@@ -134,21 +134,20 @@ public class RateCourse extends AppCompatActivity {
                             editor.putFloat(getString(R.string.PYTHON_AVERAGE_RATING_KEY), pythonCourse.getAverageRating());
                             editor.apply();
 
-                            // Resets the current rating back to 0 //
-                            pythonCourse.setNewRating(getResources().getInteger(R.integer.defaultValue));
-
                             // Assign key and value on intent that is sent back to CoursesPageActivity //
                             Intent pythonCourseIntent = new Intent();
                             pythonCourseIntent.putExtra(RATING, pythonCourse);
                             setResult(RESULT_OK, pythonCourseIntent);
 
-                            // !!! NOTE !!! default_email is currently set to an email I set up for the purpose of developing this app.
+                            // !!! NOTE !!! default_email is currently set to an empty string. //
                             // Change string in the values/strings.xml //
                             // Give our email a recipient, subject, body, and the average rating that they now have //
                             String pythonUriText =
                                             getString(R.string.mailto) + Uri.encode(getString(R.string.default_email)) +
                                             getString(R.string.subject) + Uri.encode(getString(R.string.subject_text)) +
-                                            getString(R.string.body) + Uri.encode(getString(R.string.new_average_rating) + pythonCourse.getAverageRating()) + getString(R.string.period);
+                                            getString(R.string.body) + Uri.encode(getString(R.string.student_new_rating) + pythonCourse.getNewRating() +
+                                                    getString(R.string.new_line) +
+                                                    getString(R.string.new_average_rating) + pythonCourse.getAverageRating()) + getString(R.string.period);
 
                             Uri pythonUri = Uri.parse(pythonUriText);
 
@@ -185,8 +184,6 @@ public class RateCourse extends AppCompatActivity {
 
                             editor.apply();
 
-                            C_Course.setNewRating(getResources().getInteger(R.integer.defaultValue));
-
                             Intent C_courseIntent = new Intent();
                             C_courseIntent.putExtra(RATING, C_Course);
                             setResult(RESULT_OK, C_courseIntent);
@@ -195,7 +192,9 @@ public class RateCourse extends AppCompatActivity {
                             String C_UriText =
                                             getString(R.string.mailto) + Uri.encode(getString(R.string.default_email)) +
                                             getString(R.string.subject) + Uri.encode(getString(R.string.subject_text)) +
-                                            getString(R.string.body) + Uri.encode(getString(R.string.new_average_rating) + C_Course.getAverageRating()) + getString(R.string.period);
+                                            getString(R.string.body) + Uri.encode(getString(R.string.student_new_rating) + C_Course.getNewRating() +
+                                                    getString(R.string.new_line) +
+                                                    getString(R.string.new_average_rating) + C_Course.getAverageRating()) + getString(R.string.period);
 
                             Uri C_Uri = Uri.parse(C_UriText);
 
@@ -231,8 +230,6 @@ public class RateCourse extends AppCompatActivity {
                             editor.putFloat(getString(R.string.JS_AVERAGE_RATING_KEY), JSCourse.getAverageRating());
                             editor.apply();
 
-                            JSCourse.setNewRating(getResources().getInteger(R.integer.defaultValue));
-
                             Intent JS_courseIntent = new Intent();
                             JS_courseIntent.putExtra(RATING, JSCourse);
                             setResult(RESULT_OK, JS_courseIntent);
@@ -241,7 +238,9 @@ public class RateCourse extends AppCompatActivity {
                             String JS_UriText =
                                             getString(R.string.mailto) + Uri.encode(getString(R.string.default_email)) +
                                             getString(R.string.subject) + Uri.encode(getString(R.string.subject_text)) +
-                                            getString(R.string.body) + Uri.encode(getString(R.string.new_average_rating) + JSCourse.getAverageRating()) + getString(R.string.period);
+                                            getString(R.string.body) + Uri.encode(getString(R.string.student_new_rating) + JSCourse.getNewRating() +
+                                                    getString(R.string.new_line) +
+                                                    getString(R.string.new_average_rating) + JSCourse.getAverageRating()) + getString(R.string.period);
 
                             Uri JS_Uri = Uri.parse(JS_UriText);
 
@@ -277,8 +276,6 @@ public class RateCourse extends AppCompatActivity {
                             editor.putFloat(getString(R.string.ANGULAR_AVERAGE_RATING_KEY), angularCourse.getAverageRating());
                             editor.apply();
 
-                            angularCourse.setNewRating(getResources().getInteger(R.integer.defaultValue));
-
                             Intent angularCourseIntent = new Intent();
                             angularCourseIntent.putExtra(RATING, angularCourse);
                             setResult(RESULT_OK, angularCourseIntent);
@@ -286,7 +283,9 @@ public class RateCourse extends AppCompatActivity {
                             String angularUriText =
                                             getString(R.string.mailto) + Uri.encode(getString(R.string.default_email)) +
                                             getString(R.string.subject) + Uri.encode(getString(R.string.subject_text)) +
-                                            getString(R.string.body) + Uri.encode(getString(R.string.new_average_rating) + angularCourse.getAverageRating()) + getString(R.string.period);
+                                            getString(R.string.body) + Uri.encode(getString(R.string.student_new_rating) + angularCourse.getNewRating() +
+                                                    getString(R.string.new_line) +
+                                                    getString(R.string.new_average_rating) + angularCourse.getAverageRating()) + getString(R.string.period);
 
                             Uri angularUri = Uri.parse(angularUriText);
 
@@ -321,8 +320,6 @@ public class RateCourse extends AppCompatActivity {
                             editor.putFloat(getString(R.string.NODEJS_AVERAGE_RATING_KEY), nodeJSCourse.getAverageRating());
                             editor.apply();
 
-                            nodeJSCourse.setNewRating(getResources().getInteger(R.integer.defaultValue));
-
                             Intent nodeJS_courseIntent = new Intent();
                             nodeJS_courseIntent.putExtra(RATING, nodeJSCourse);
                             setResult(RESULT_OK, nodeJS_courseIntent);
@@ -330,7 +327,9 @@ public class RateCourse extends AppCompatActivity {
                             String nodeJS_UriText =
                                             getString(R.string.mailto) + Uri.encode(getString(R.string.default_email)) +
                                             getString(R.string.subject) + Uri.encode(getString(R.string.subject_text)) +
-                                            getString(R.string.body) + Uri.encode(getString(R.string.new_average_rating) + nodeJSCourse.getAverageRating()) + getString(R.string.period);
+                                            getString(R.string.body) + Uri.encode(getString(R.string.student_new_rating) + nodeJSCourse.getNewRating() +
+                                                    getString(R.string.new_line) +
+                                                    getString(R.string.new_average_rating) + nodeJSCourse.getAverageRating()) + getString(R.string.period);
 
                             Uri nodeJS_Uri = Uri.parse(nodeJS_UriText);
 
@@ -364,8 +363,6 @@ public class RateCourse extends AppCompatActivity {
                             editor.putFloat(getString(R.string.JAVA_AVERAGE_RATING_KEY), javaCourse.getAverageRating());
                             editor.apply();
 
-                            javaCourse.setNewRating(getResources().getInteger(R.integer.defaultValue));
-
                             Intent javaCourseIntent = new Intent();
                             javaCourseIntent.putExtra(RATING, javaCourse);
                             setResult(RESULT_OK, javaCourseIntent);
@@ -373,7 +370,9 @@ public class RateCourse extends AppCompatActivity {
                             String javaUriText =
                                             getString(R.string.mailto) + Uri.encode(getString(R.string.default_email)) +
                                             getString(R.string.subject) + Uri.encode(getString(R.string.subject_text)) +
-                                            getString(R.string.body) + Uri.encode(getString(R.string.new_average_rating) + javaCourse.getCurrentOverallRating()) + getString(R.string.period);
+                                            getString(R.string.body) + Uri.encode(getString(R.string.student_new_rating) + javaCourse.getNewRating() +
+                                                    getString(R.string.new_line) +
+                                                    getString(R.string.new_average_rating) + javaCourse.getAverageRating()) + getString(R.string.period);
 
                             Uri javaUri = Uri.parse(javaUriText);
 

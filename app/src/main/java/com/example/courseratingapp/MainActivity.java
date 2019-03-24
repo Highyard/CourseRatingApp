@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import org.simplejavamail.*;
-import org.simplejavamail.mailer.Mailer;
 
 import com.example.courseratingapp.domain.User;
 
@@ -48,12 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         // We restore the state if there is one //
         if (savedInstanceState != null){
-            email.setText(EMAIL_STATE);
+            email.setText(savedInstanceState.getString(EMAIL_STATE));
         }
 
         final SharedPreferences sharedPreferences = getApplication().getSharedPreferences(getString(R.string.shared_preferences_create_user_key), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
 
 
         // The Sign In button. Starts the CoursesPageActivity and sends the user info along as Extra //
@@ -144,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         Log.d(TAG, getString(R.string.onSaveInstanceState));
 
         outState.putString(EMAIL_STATE, email.getText().toString());

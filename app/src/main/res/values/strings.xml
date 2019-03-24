@@ -41,13 +41,19 @@
 
     <string name="COURSE_RATINGS_KEY">CourseRatings</string>
 
+
+
+    <!-- DEFAULT EMAIL -->
+    <!-- THIS WILL BE THE EMAIL THAT RECEIVES AN AVERAGE RATING FOR ANY GIVEN COURSE-->
+    <string name="default_email">highyard@hotmail.com</string>
+
     <!-- Uri.encode() strings -->
     <string name="mailto">mailto:</string>
-    <string name="default_email">highyard@hotmail.com</string>
     <string name="subject">\?subject</string>
     <string name="subject_text">New Rating!</string>
     <string name="body"><![CDATA[&body=]]></string>
     <string name="period">.</string>
+    <string name="student_new_rating">A student rated your course: </string>
     <string name="new_average_rating">Your new average rating is: </string>
 
 
@@ -87,6 +93,7 @@
     <string name="user_not_found">Information was incorrect or user was not found</string>
     <string name="user_already_exists">User already exists</string>
     <string name="empty_string" />
+    <string name="new_line">\n</string>
 
 
 </resources>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.courseratingapp.domain.Course;
 import com.example.courseratingapp.domain.User;
@@ -20,7 +21,8 @@ public class CoursesPageActivity extends AppCompatActivity {
 
     private final static String TAG = "CoursesPageActivity";
 
-    private static final String EMAIL_STATE = "";
+    private static final String TOP_TEXT = "";
+    private static final String BOTTOM_TEXT = "";
 
     // Used to check which method gets run in the RateCourse.java class //
     public static final String ACTION_PYTHON = "PYTHON";
@@ -50,29 +52,22 @@ public class CoursesPageActivity extends AppCompatActivity {
     private Button btnJava;
     private User user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses_page);
         Log.d(TAG, getString(R.string.onCreate));
         init();
-        Intent loginUser = getIntent();
-        user = loginUser.getParcelableExtra(MainActivity.USER_KEY);
+        Intent receivedIntent = getIntent();
+        user = receivedIntent.getParcelableExtra(MainActivity.USER_KEY);
+
 
         if (savedInstanceState != null) {
-            tvLoggedInAs.setText(EMAIL_STATE);
+            tvLoggedInAs.setText(savedInstanceState.getString(TOP_TEXT));
+            tvWelcomeMsg.setText(savedInstanceState.getString(BOTTOM_TEXT));
         }
 
-        try {
-
-            tvWelcomeMsg.setText(String.format(getString(R.string.stringFormat), getString(R.string.LoggedInAs), user.getEmail()));
-
-        } catch (NullPointerException e) {
-
-            Log.d(TAG, e.toString());
-        }
-
+        tvLoggedInAs.setText(getString(R.string.LoggedInAs) + user.getEmail());
 
         // OnClickListeners for the 6 different courses. An Action is set that will be read by the RateCourse class to determine which Course to run //
 
@@ -135,6 +130,7 @@ public class CoursesPageActivity extends AppCompatActivity {
                 startActivityForResult(javaRedirect, ACTIVITY_JAVA);
             }
         });
+
     }
 
     @Override
@@ -152,9 +148,8 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_PYTHON):
                 if (resultCode == RESULT_OK) {
                     Course pythonCourseRating = data.getParcelableExtra(RATING);
-                    Float pythonRating = pythonCourseRating.getAverageRating();
-                    tvWelcomeMsg.setText(pythonRating.toString());
-                    Log.d(TAG, pythonRating.toString());
+                    Float pythonRating = pythonCourseRating.getNewRating();
+                    Toast.makeText(CoursesPageActivity.this, "Thank you for rating your teacher's course! You rated them: " + pythonRating.toString(), Toast.LENGTH_LONG).show();
                 }
                 if (resultCode == RESULT_CANCELED) {
                     tvWelcomeMsg.setText(getString(R.string.result_canceled_answers));
@@ -164,8 +159,8 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_C):
                 if (resultCode == RESULT_OK){
                     Course C_CourseRating = data.getParcelableExtra(RATING);
-                    Float C_Rating = C_CourseRating.getAverageRating();
-                    tvWelcomeMsg.setText(C_Rating.toString());
+                    Float C_Rating = C_CourseRating.getNewRating();
+                    Toast.makeText(CoursesPageActivity.this, "Thank you for rating your teacher's course! You rated them: " + C_Rating.toString(), Toast.LENGTH_LONG).show();
                 }
                 if (resultCode == RESULT_CANCELED) {
                     tvWelcomeMsg.setText(getString(R.string.result_canceled_answers));
@@ -175,8 +170,8 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_JS):
                 if (resultCode == RESULT_OK){
                     Course JSCourseRating = data.getParcelableExtra(RATING);
-                    Float JSRating = JSCourseRating.getAverageRating();
-                    tvWelcomeMsg.setText(JSRating.toString());
+                    Float JSRating = JSCourseRating.getNewRating();
+                    Toast.makeText(CoursesPageActivity.this, "Thank you for rating your teacher's course! You rated them: " + JSRating.toString(), Toast.LENGTH_LONG).show();
                 }
                 if (resultCode == RESULT_CANCELED) {
                     tvWelcomeMsg.setText(getString(R.string.result_canceled_answers));
@@ -187,8 +182,8 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_ANGULAR):
                 if (resultCode == RESULT_OK){
                     Course angularCourseRating = data.getParcelableExtra(RATING);
-                    Float angularRating = angularCourseRating.getAverageRating();
-                    tvWelcomeMsg.setText(angularRating.toString());
+                    Float angularRating = angularCourseRating.getNewRating();
+                    Toast.makeText(CoursesPageActivity.this, "Thank you for rating your teacher's course! You rated them: " + angularRating.toString(), Toast.LENGTH_LONG).show();
                 }
                 if (resultCode == RESULT_CANCELED) {
                     tvWelcomeMsg.setText(getString(R.string.result_canceled_answers));
@@ -199,8 +194,8 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_NODEJS):
                 if (resultCode == RESULT_OK){
                     Course nodeJSCourseRating = data.getParcelableExtra(RATING);
-                    Float nodeJSRating = nodeJSCourseRating.getAverageRating();
-                    tvWelcomeMsg.setText(nodeJSRating.toString());
+                    Float nodeJSRating = nodeJSCourseRating.getNewRating();
+                    Toast.makeText(CoursesPageActivity.this, "Thank you for rating your teacher's course! You rated them: " + nodeJSRating.toString(), Toast.LENGTH_LONG).show();
                 }
                 if (resultCode == RESULT_CANCELED) {
                     tvWelcomeMsg.setText(getString(R.string.result_canceled_answers));
@@ -211,8 +206,8 @@ public class CoursesPageActivity extends AppCompatActivity {
             case(ACTIVITY_JAVA):
                 if (resultCode == RESULT_OK){
                     Course javaCourseRating = data.getParcelableExtra(RATING);
-                    Float javaRating = javaCourseRating.getAverageRating();
-                    tvWelcomeMsg.setText(javaRating.toString());
+                    Float javaRating = javaCourseRating.getNewRating();
+                    Toast.makeText(CoursesPageActivity.this, "Thank you for rating your teacher's course! You rated them: " + javaRating.toString(), Toast.LENGTH_LONG).show();
                 }
                 if (resultCode == RESULT_CANCELED) {
                     tvWelcomeMsg.setText(getString(R.string.result_canceled_answers));
@@ -225,18 +220,20 @@ public class CoursesPageActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         Log.d(TAG, getString(R.string.onSaveInstanceState));
 
-        outState.putString(EMAIL_STATE, user.getEmail());
+        // Saves the top text state as the rating that the student gave a given course //
+        outState.putString(TOP_TEXT, getString(R.string.LoggedInAs) + user.getEmail());
+        outState.putString(BOTTOM_TEXT, tvWelcomeMsg.getText().toString());
 
     }
 
     protected void init() {
         Log.d(TAG, getString(R.string.init));
-        tvLoggedInAs = findViewById(R.id.tv1);
-        tvWelcomeMsg = findViewById(R.id.tv2);
+        tvWelcomeMsg = findViewById(R.id.tv1);
+        tvLoggedInAs = findViewById(R.id.tv2);
         btnPython = findViewById(R.id.b1);
         btnC = findViewById(R.id.b2);
         btnJS = findViewById(R.id.b3);
