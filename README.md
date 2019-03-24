@@ -1,7 +1,13 @@
 # CourseRatingApp
 Mandatory_1_Android_App
 
-# OBS! This program will not work outright, read the NOTES section for more info.
+# OBS! 
+## This program will not work outright, read the NOTES section for more info.
+
+# Deploy
+* First download the zip of this repository and unzip it in the desired location on your machine.
+* In Android Studio click **File** --> **New** --> **Import Project** --> **Select the unzipped project**
+* Finally click Run and select either your desired emulator, or a connected android device.
 
 ## App functionality:
 * 1.1 Login and validation
@@ -23,7 +29,7 @@ the corresponding course. The proper Course is started via the startAcitivtyForR
 the average rating for the course is displayed to the user upon returning to the previous page.
 
 * 1.3 Prompting user to send email to teacher of chosen course
-When the user taps "Submit answers" button, he prompted to choose an email app and thereafter send the email with the average rating
+When the user taps "Submit answers" button, he's prompted to choose an email app and thereafter send the email with the average rating
 to the teacher.
 
 * 1.4 Passing Parcelable models between activities
