@@ -19,7 +19,6 @@ Mandatory_1_Android_App
 
 ## Describing the App
 * 1.1 Login and validation
-The credentials entered by the user are stored in PLAIN TEXT and is a SECURITY ISSUE, and is NOT RECOMMENDED.
 This App uses SharedPreferences to store users, and to check if an email already exists. If the email does not exist,
 the user is redirected back to the login screen with his info already entered into the required fields, and needs only tap "Sign In".
 
